@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>在线徽章制作</title>
+    <link href="cropper.min.css" rel="stylesheet">
+    <style>
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 50%;
+        }
+
+        body {
+            background-color: blanchedalmond;
+        }
+
+        /*libgif.js*/
+        .jsgif {
+            display: inline-block;
+        }
+
+        #temp {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="max-height: 70vh;"><img id="img-crop" style="display: block; max-width: 100%;"></div>
+    Open Image: <input type="file" id="open-image" accept="image/png, image/jpeg" onchange="OpenImage()" /><br>
+    Open Effect:<input type="file" id="open-effect" accept="image/gif" onchange="OpenEffect()" /><br>
+    <button onclick="Crop()">Crop</button><br>
+    <p>
+        <canvas id="canvas-cropped"></canvas>
+        +<img id="effect" src="cheap.gif">
+        =<img id="output"><img id="output_apng">
+    </p>
+    <input type="number" id="anime-delay" min="0" value="50" onchange="TryCreateMedal()">ms per frame<br>
+    <script src="cropper.min.js"></script>
+    <script src="libgif.js"></script>
+    <script src="gif.js"></script>
+    <script src="canvas2apng.js"></script>
+    <script src="main.js"></script>
+    <p>
+        一些说明：<br>
+        点「Open Image」上传原始图片，调整后点「Crop」裁切。提供一个五毛特效，可自备透明的gif特效点击「Open Effect」上传。<br>
+        裁切完成则生成gif和apng，请自行右键另存为。<br>
+        局限性：使用的gif库无法调整杂边、调色板等细节。如有<ruby>需求<rt>写轮眼</rt></ruby>可以考虑下载apng，使用其他工具转换为psd（比如<a href="https://products.aspose.app/imaging/zh-hans/conversion/apng-to-psd" target="_blank">
+            在线将APNG 转换为PSD</a>），然后在“时间轴”窗口点击“创建帧动画” → 在“时间轴”的菜单里选择“从图层建立帧” → 调整帧率等参数  → 文件-导出-存储为Web所用格式（旧版）。<sub>（其实缩小以后杂边什么的根本看不到的啦）</sub><br>
+    </p>
+    <p><br>随手捏的在线徽章制作工具 by AE<br></p>
+    <p>Thanks to
+        <a href="https://github.com/fengyuanchen/cropperjs" target="_blank">Cropper.js</a> 
+        <a href="https://github.com/buzzfeed/libgif-js" target="_blank">libgif-js</a> 
+        <a href="https://github.com/jnordberg/gif.js" target="_blank">gif.js</a> 
+        <a href="https://github.com/akalverboer/canvas2apng" target="_blank">canvas2apng</a>
+    </p>
+</body>
+
+</html>
